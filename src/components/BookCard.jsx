@@ -17,7 +17,9 @@ function BookCard({ book }) {
         alt={info.title}
         className="w-full h-60 object-cover"
       />
-
+<div className="bg-white dark:bg-gray-800 text-black dark:text-white p-4 rounded">
+  
+</div>
       <div className="p-4">
 
         <h3 className="font-bold text-lg">

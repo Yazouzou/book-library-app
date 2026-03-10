@@ -1,25 +1,29 @@
+import { FaSearch, FaBookOpen } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+import Button from "./Button"
+
 function Hero() {
+  const navigate = useNavigate()
+
   return (
-    <section className="text-center py-20 px-6 bg-gray-100">
+    <section className="bg-gray-100 py-24 px-6">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          Discover Your Next Favorite Read
+        </h1>
+        <p className="text-gray-700 mb-10 text-lg md:text-xl">
+          Search thousands of books and explore the latest releases in our library.
+        </p>
 
-      <h2 className="text-4xl md:text-5xl font-bold mb-6">
-        Discover your next favorite read
-      </h2>
-
-      <p className="text-gray-600 mb-8">
-        Browse thousands of books and authors.
-      </p>
-
-      <div className="flex justify-center gap-4">
-        <button className="bg-black text-white px-6 py-3 rounded-lg">
-          Start Searching
-        </button>
-
-        <button className="border px-6 py-3 rounded-lg">
-          Latest Releases
-        </button>
+        <div className="flex flex-col sm:flex-row justify-center gap-6">
+          <Button onClick={() => navigate("/search")} color="black">
+            <FaSearch /> Start Searching
+          </Button>
+          <Button onClick={() => navigate("/search?q=latest")} outline>
+            <FaBookOpen /> Latest Releases
+          </Button>
+        </div>
       </div>
-
     </section>
   )
 }

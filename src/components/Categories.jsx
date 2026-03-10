@@ -1,29 +1,16 @@
+import Button from "./Button"
+
 function Categories() {
-
-  const categories = [
-    "Fiction",
-    "Non-Fiction",
-    "Science"
-  ]
-
   return (
-    <section className="py-16 text-center">
-
-      <h3 className="text-2xl font-bold mb-8">
-        Loved by readers everywhere
-      </h3>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10">
-
-        {categories.map((cat, index) => (
-          <div
-            key={index}
-            className="p-6 border rounded-xl shadow hover:shadow-lg"
-          >
-            <h4 className="text-lg font-semibold">{cat}</h4>
-          </div>
-        ))}
-
+    <section className="py-16 px-6 bg-white">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-8">Explore Categories</h2>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+          <Button onClick={() => console.log("Fiction clicked")} color="black">Fiction</Button>
+          <Button onClick={() => console.log("Non-fiction clicked")} outline>Non-fiction</Button>
+          <Button onClick={() => console.log("Science clicked")} color="black">Science</Button>
+          <Button onClick={() => console.log("History clicked")} outline>History</Button>
+        </div>
       </div>
     </section>
   )

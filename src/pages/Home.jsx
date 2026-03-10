@@ -1,29 +1,23 @@
-import SearchBar from "../components/SearchBar"
+// src/pages/Home.jsx
+import Hero from "../components/Hero"
+import Categories from "../components/Categories"
+import Features from "../components/Features"
+import Steps from "../components/Steps"
+import Reviews from "../components/Reviews"
+import CTA from "../components/CTA"
+import Footer from "../components/Footer"
 
-function Home(){
-
-  return(
-
-    <section className="bg-gray-100 py-32">
-
-      <div className="max-w-6xl mx-auto text-center">
-
-        <h1 className="text-6xl font-bold mb-6">
-          Discover your next favorite book
-        </h1>
-
-        <p className="text-gray-600 mb-10">
-          Search millions of books and find your next read
-        </p>
-
-        <div className="max-w-xl mx-auto">
-          <SearchBar/>
-        </div>
-
-      </div>
-
-    </section>
-
+function Home() {
+  return (
+    <div>
+      <Hero />
+      <Categories />
+      <Features />
+      <Steps />
+      <Reviews />
+      <CTA />
+      <Footer />
+    </div>
   )
 }
 
