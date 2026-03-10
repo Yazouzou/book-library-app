@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect,useState } from "react"
-import { getBook } from "../services/googleBooks"
+import { getBookById } from "../services/googleBooks"
 
 function BookDetails(){
 
@@ -11,7 +11,7 @@ function BookDetails(){
   useEffect(()=>{
 
     const loadBook = async()=>{
-      const data = await getBook(id)
+      const data = await getBookById(id)
       setBook(data)
     }
 

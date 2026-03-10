@@ -1,22 +1,25 @@
-import axios from "axios"
+const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 
-const API = "https://www.googleapis.com/books/v1/volumes"
-
+// Search books by keyword
 export const searchBooks = async (query) => {
+  try {
+    const response = await fetch(`${BASE_URL}?q=${query}`);
+    const data = await response.json();
+    return data.items || [];
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    return [];
+  }
+};
 
-  const res = await axios.get(API, {
-    params: {
-      q: query,
-      maxResults: 20
-    }
-  })
-
-  return res.data.items
-}
-
-export const getBook = async (id) => {
-
-  const res = await axios.get(`${API}/${id}`)
-
-  return res.data
-}
+// Get book details by ID
+export const getBookById = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching book details:", error);
+    return null;
+  }
+};

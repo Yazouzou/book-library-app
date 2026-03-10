@@ -1,9 +1,9 @@
-import { FaSearch, FaBookOpen } from "react-icons/fa"
-import { useNavigate } from "react-router-dom"
-import Button from "./Button"
+import { FaSearch, FaBookOpen } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 function Hero() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <section className="bg-gray-100 py-24 px-6">
@@ -16,16 +16,25 @@ function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6">
-          <Button onClick={() => navigate("/search")} color="black">
+          <Button
+            onClick={() => navigate("/search")}
+            color="black"
+            className="flex items-center gap-2"
+          >
             <FaSearch /> Start Searching
           </Button>
-          <Button onClick={() => navigate("/search?q=latest")} outline>
+
+          <Button
+            onClick={() => navigate("/search?q=latest")}
+            outline
+            className="flex items-center gap-2"
+          >
             <FaBookOpen /> Latest Releases
           </Button>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

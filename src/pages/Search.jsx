@@ -1,46 +1,41 @@
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
-import { searchBooks } from "../services/googleBooks"
-import BookCard from "../components/BookCard"
+// src/pages/Search.jsx
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import SearchBar from "../components/SearchBar";
+import BookCard from "../components/BookCard";
+import { searchBooks } from "../services/googleBooks";
 
-function Search(){
+function Search() {
+  const [books, setBooks] = useState([]);
+  const [searchParams] = useSearchParams(); // react-router hook
+  const query = searchParams.get("q") || "";
 
-  const [books,setBooks] = useState([])
+  // Run search when query changes
+  useEffect(() => {
+    const fetchBooks = async () => {
+      if (query) {
+        const results = await searchBooks(query);
+        setBooks(results);
+      }
+    };
+    fetchBooks();
+  }, [query]);
 
-  const query = new URLSearchParams(useLocation().search).get("q")
+  const handleSearch = async (term) => {
+    const results = await searchBooks(term);
+    setBooks(results);
+  };
 
-  useEffect(()=>{
-
-    const fetchBooks = async ()=>{
-
-      const data = await searchBooks(query)
-
-      setBooks(data)
-    }
-
-    fetchBooks()
-
-  },[query])
-
-  return(
-
-    <div className="max-w-6xl mx-auto p-6">
-
-      <h1 className="text-3xl font-bold mb-6">
-        Results for "{query}"
-      </h1>
-
-      <div className="grid md:grid-cols-4 gap-6">
-
-        {books?.map(book=>(
-          <BookCard key={book.id} book={book}/>
+  return (
+    <div className="p-8">
+      <SearchBar onSearch={handleSearch} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+        {books.map((book) => (
+          <BookCard key={book.id} book={book} />
         ))}
-
       </div>
-
     </div>
-
-  )
+  );
 }
 
-export default Search
+export default Search;

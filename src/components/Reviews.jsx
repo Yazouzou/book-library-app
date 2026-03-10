@@ -9,15 +9,12 @@ function Reviews() {
   
 </div>
       <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow">
-
         <p className="mb-4">
           "Book Library has transformed my reading experience!"
         </p>
-
         <p className="font-bold">
-          Jordan Smith
+          Yousra Azouzou
         </p>
-
       </div>
 
     </section>
